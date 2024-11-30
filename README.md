@@ -1,5 +1,6 @@
 # Photogrammetry-project
 
+
 ## 1.Bundle Block Adjustment
 ### 1.1 Export references from Metashape
 File/Export/Export References -> .xml
@@ -7,7 +8,8 @@ File/Export/Export References -> .xml
 It will automatically import markers and theirs projections using read_xml.py
 ### 1.3 Set GCP and tie points line 27-28 in bundle_block.py
 At the moment, the program uses CP as tie point, I still need to find out how to export tie points projections from Metashape. Then it may not work if not enough CP.
-### 1.4 Run
+### 1.4 Run python3 bundle_block.py
+
 
 ## 2. Get station frame
 Frame-to-frame least squares optimization to find transformation between two station frames.
