@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 
 # 1->3 + 3->0
+# [[x, y, z, yaw, pitch, roll], ...]
 transfos = [[2.6731477715726246, -0.038883774318427954, -0.043027931685839786, 79.1701, -0.0721, 0.4585], [2.8177869926306376, 0.5911232677815503, 0.009485646122286338, 78.8048, -0.134, -0.0699]]
 points =    [
             [1, 0, 0],
@@ -81,8 +82,8 @@ def model_station_b(params, points_station_a):
     :return: Predicted points in frame b
     """
 
-    x, y, z = params[:3]  # Station 2 position
-    angles = np.radians(params[3:])   # Station 2 Orientation
+    x, y, z = params[:3]
+    angles = np.radians(params[3:])
     R = yaw_pitch_roll_matrix(angles)
 
     transformed_points = (R @ (points_station_a  - np.array([x, y, z])).T).T  # From frame 1 to frame 2
@@ -90,10 +91,11 @@ def model_station_b(params, points_station_a):
 
 
 result = points
+# Compose transformations
 for i in range(len(transfos)):
     result = model_station_b(transfos[i], result)
 
 df = pd.DataFrame(result)
-df.to_excel("export_tableau.xlsx", index=False)
-print("Tableau exporté avec succès dans 'export_tableau.xlsx'")
+df.to_excel("output.xlsx", index=False)
+print("Export successful in 'output.xlsx'")
 
