@@ -2,8 +2,8 @@
 
 
 ## 1.Bundle Block Adjustment
-### 1.1 Export references from Metashape
-File/Export/Export References -> .xml
+### 1.1 Export markers from Metashape
+File/Export/Export Markers -> .xml
 ### 1.2 Set path to your xml file line 12 in bundle_block.py
 It will automatically import markers and theirs projections using read_xml.py
 ### 1.3 Set GCP and tie points line 27-28 in bundle_block.py
